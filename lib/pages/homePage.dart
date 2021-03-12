@@ -22,17 +22,30 @@ class _HomePageState extends State<HomePage>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:Container(
-        height: 172,
-        child : Swiper(
-          itemBuilder: (BuildContext context,int index){
-            return imgs[index];
-          },
-          itemCount: imgs.length,
-          pagination: new SwiperPagination(),
-          autoplay: true,
-          autoplayDisableOnInteraction: true,
+    return  new Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 175,
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  //条目构建函数传入了index,根据index索引到特定图片
+                  return imgs[index];
+                },
+                itemCount: imgs.length,
+                autoplay: true,//
+                //pagination: new SwiperPagination(), //页码，通俗讲就是下边的圆点  这些都是控件默认写好的,直接用
+                //control: new SwiperControl(),//控制器，通俗讲就是两边的箭头
+              ),
+            ),
+            Row(
+              children: [
+                Text("this is a data1"),
+                Text("this is a data2")
+              ],
+            )
+          ],
         ),
       ),
     );
@@ -48,3 +61,5 @@ class _HomePageState extends State<HomePage>{
   }
 
 }
+
+
